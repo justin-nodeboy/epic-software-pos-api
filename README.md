@@ -1,7 +1,7 @@
-#Epic Software Sale API
+#Epic Software Sale API - WORK IN PROGRESS, NOT PRODUCTION READY
 
 This is part of a product suite that allows you to build a full featured 
-e-commerce system and to self host it. The platform included an API, Web App, iOS and Android native apps.
+e-commerce system and to self host it. The platform includes an API, Web App, iOS and Android native apps.
 All open source, all 100% free. Contact us if you want bespoke hosting solutions.
 
 ## Installation
