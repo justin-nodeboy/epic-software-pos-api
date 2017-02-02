@@ -11,56 +11,61 @@ const https = require('https');
 const http = require('http');
 const httpPort = 5000;
 const httpsPort = 3443;
+const MongoClient = require("./MongoClient");
 
-//Redirect to HTTPS if on Heroku
-const forceSsl = function (req, res, next) {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-        return res.redirect(['https://', req.get('Host'), req.url].join(''));
-    }
-    return next();
-};
+MongoClient.prototype.connectDB(function (err) {
+    if (err) process.exit();
 
-//Check which environment you are working on, and redirect traffic accordingly
-if (process.env.NODE_ENV === "development"){
-    app.all('*', function(req, res, next) {
-        if (req.secure) {
-            return next();
-        } else {
-            res.redirect('https://'+req.hostname+":"+app.get('port_https')+req.url);
+    //Redirect to HTTPS if on Heroku
+    const forceSsl = function (req, res, next) {
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+            return res.redirect(['https://', req.get('Host'), req.url].join(''));
         }
-    });
-} else {
-    app.use(forceSsl);
-}
-
-const PrimaryRouter = require("./routes/PrimaryRouter");
-//Server Middleware
-app.use(PrimaryRouter);
-
-//Start Server
-if (process.env.NODE_ENV === "development"){
-    const options = {
-        key: fs.readFileSync('./certs/85046192-localhost_3443.key'),
-        cert: fs.readFileSync('./certs/85046192-localhost_3443.cert')
+        return next();
     };
 
-    app.set('port_https', process.env.PORT);
+    //Check which environment you are working on, and redirect traffic accordingly
+    if (process.env.NODE_ENV === "development") {
+        app.all('*', function (req, res, next) {
+            if (req.secure) {
+                return next();
+            } else {
+                res.redirect('https://' + req.hostname + ":" + app.get('port_https') + req.url);
+            }
+        });
+    } else {
+        app.use(forceSsl);
+    }
 
-    const secureServer = https.createServer(options, app);
-    secureServer.listen(httpsPort,function (){
-        console.log('HTTPS Server on');
-    });
+    const PrimaryRouter = require("./routes/PrimaryRouter");
+    //Server Middleware
+    app.use(PrimaryRouter);
 
-    let standardServer = http.createServer(app);
-    standardServer.listen(httpPort,function (){
-        console.log('HTTP Server on');
-    });
-} else {
-    //Heroku
-    app.listen(process.env.PORT, function () {
-        console.log('Server Listen');
-    });
-}
+    //Start Server
+    if (process.env.NODE_ENV === "development") {
+        const options = {
+            key: fs.readFileSync('./certs/85046192-localhost_3443.key'),
+            cert: fs.readFileSync('./certs/85046192-localhost_3443.cert')
+        };
+
+        app.set('port_https', process.env.PORT);
+
+        const secureServer = https.createServer(options, app);
+        secureServer.listen(httpsPort, function () {
+            console.log('HTTPS Server on');
+        });
+
+        let standardServer = http.createServer(app);
+        standardServer.listen(httpPort, function () {
+            console.log('HTTP Server on');
+        });
+    } else {
+        //Heroku
+        app.listen(process.env.PORT, function () {
+            console.log('Server Listen');
+        });
+    }
+});
 
 module.exports = app;
 

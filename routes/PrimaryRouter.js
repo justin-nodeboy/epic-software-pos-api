@@ -12,12 +12,15 @@ const app = require("../app");
 
 //Routers
 const IndexRouter = require('./Index/IndexRouter');
+const UsersRouter = require('./Users/UsersRouter');
 
 //Middleware
-app.use(bodyParser);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
 app.use('/', IndexRouter);
+app.use('/users',UsersRouter);
 
 //Export Router
 module.exports = router;
