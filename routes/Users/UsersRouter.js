@@ -11,6 +11,11 @@ router.route('/')
     .get(UsersController.returnAllUsers)
     .post(UsersController.createNewUser);
 
+router.route('/:id')
+    .get(UsersController.returnSingleUser)
+    .delete(UsersController.deleteSingleUser);
+
+
 module.exports = router;
 
 

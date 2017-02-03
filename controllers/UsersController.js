@@ -50,6 +50,33 @@ class UsersController {
             })
     }
 
+    /**
+     * This controller method returns a single user
+     */
+    static returnSingleUser(){
+        usersLib.returnSingleUser({_id: arguments[0].id})
+            .then(result => {
+                arguments[1].status(200).send({success:result});
+            })
+            .catch(err => {
+                arguments[1].status(500).send({error: err.message});
+            });
+    }
+
+    /**
+     * This function deletes a single user
+     */
+    static deleteSingleUser(){
+        if (!arguments[0].params.id) return arguments[1].status(400).send({error:"Missing ID Parameter"});
+        usersLib.removeSingleUserBy(arguments[0].params.id)
+            .then(() => {
+                arguments[1].status(200).send({success:"User has been removed"});
+            })
+            .catch(err => {
+                arguments[1].status(500).send({error: err.message});
+            })
+    }
+
 }
 
 module.exports = UsersController;
