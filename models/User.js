@@ -76,15 +76,15 @@ class User {
 
         if (!obj.hasOwnProperty('phone')){
             throw new Error("A phone is required");
-        } else if (typeof obj.phone != "string"){
-            throw new Error("The phone must be a string");
+        } else if (typeof obj.phone != "number"){
+            throw new Error("The phone must be a number");
         } else {
             this.phone = obj.phone;
         }
 
         if (!obj.hasOwnProperty('joinDate')){
             throw new Error("joinDate is required");
-        } else if (!obj.joinDate instanceof Date){
+        } else if (Object.prototype.toString.call(obj.joinDate) != "[object Date]") {
             throw new Error("joinDate must be a date");
         } else {
             this.joinDate = new Date(obj.joinDate);
@@ -92,7 +92,7 @@ class User {
 
         if (!obj.hasOwnProperty('dateOfBirth')){
             throw new Error("dateOfBirth is required");
-        } else if (!obj.dateOfBirth instanceof Date){
+        } else if (Object.prototype.toString.call(obj.dateOfBirth) != "[object Date]"){
             throw new Error("dateOfBirth must be a date");
         } else {
             this.dateOfBirth = new Date(obj.dateOfBirth);
