@@ -38,7 +38,7 @@ class UsersController {
                 }
             })
             .then(result => {
-                arguments[0].body.password = result.toString("hex");
+                arguments[0].body.password = result.toString("base64");
                 arguments[0].body.phone = parseInt(arguments[0].body.phone);
                 arguments[0].body.joinDate = new Date(arguments[0].body.joinDate);
                 arguments[0].body.dateOfBirth = new Date(arguments[0].body.dateOfBirth);
