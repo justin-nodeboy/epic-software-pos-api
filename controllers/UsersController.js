@@ -39,6 +39,9 @@ class UsersController {
             })
             .then(result => {
                 arguments[0].body.password = result.toString("hex");
+                arguments[0].body.phone = parseInt(arguments[0].body.phone);
+                arguments[0].body.joinDate = new Date(arguments[0].body.joinDate);
+                arguments[0].body.dateOfBirth = new Date(arguments[0].body.dateOfBirth);
                 const user = new User(arguments[0].body);
                 return usersLib.insertNew(user);
             })
@@ -71,6 +74,20 @@ class UsersController {
         usersLib.removeSingleUserBy(arguments[0].params.id)
             .then(() => {
                 arguments[1].status(200).send({success:"User has been removed"});
+            })
+            .catch(err => {
+                arguments[1].status(500).send({error: err.message});
+            })
+    }
+
+    /**
+     * This function updates a single user
+     */
+    static updateSingleUser(){
+        if (!arguments[0].params.id) return arguments[1].status(400).send({error:"Missing ID Parameter"});
+        usersLib.editUserBy(arguments[0].params.id, arguments[0].body)
+            .then(() => {
+                arguments[1].status(200).send({success:"User has been updated"});
             })
             .catch(err => {
                 arguments[1].status(500).send({error: err.message});
