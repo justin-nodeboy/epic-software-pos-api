@@ -4,6 +4,8 @@
  */
 const express = require('express');
 const router = express.Router();
+const AuthenticationController = require("../../controllers/AuthenticationController");
+const UsersController = require("../../controllers/UsersController");
 
 router.get('/', (req,res) => {
     res.status(200).send({
@@ -13,6 +15,13 @@ router.get('/', (req,res) => {
         androidVersion: "1.0.0"
     });
 });
+
+router.route('/login')
+    .post(AuthenticationController.loginUser);
+
+router.route('/register')
+    .post(UsersController.createNewUser);
+
 
 module.exports = router;
 

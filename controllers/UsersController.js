@@ -50,7 +50,7 @@ class UsersController {
             })
             .catch(err => {
                 arguments[1].status(500).send({error: err.message});
-            })
+            });
     }
 
     /**

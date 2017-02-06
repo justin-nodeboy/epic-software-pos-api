@@ -13,17 +13,18 @@ const app = require("../app");
 //Routers
 const IndexRouter = require('./Index/IndexRouter');
 const UsersRouter = require('./Users/UsersRouter');
-const AuthenticationRouter = require('./Authentication/AuthenticationRouter');
+const ProductsRouter = require('./Products/ProductsRouter');
 
 //Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Insecure Routes
-app.use('/', IndexRouter);
-app.use('/auth', AuthenticationRouter);
 //Secure Routes
 app.use('/users',UsersRouter);
+app.use('/products', ProductsRouter);
+
+//Insecure Routes
+app.use('/', IndexRouter);
 
 //Export Router
 module.exports = router;
