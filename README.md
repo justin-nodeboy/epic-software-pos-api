@@ -43,3 +43,6 @@ NODE_TLS_REJECT_UNAUTHORIZED=0
 * More unit tests, including mongo function tests
 * Create docker file and image
 
+## Other platform components
+* Web App is located [here](https://github.com/justin-nodeboy/epic-software-pos-web)
+
