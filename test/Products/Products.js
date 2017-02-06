@@ -321,7 +321,7 @@ describe("Products", () => {
                 }
             ],
             "productPrice": 4500,
-            "productStock": "Hello World",
+            "productStock": "Hello World"
         };
         expect(() => new Product(badProduct)).to.throw(Error, 'The product stock must be a number');
         done();

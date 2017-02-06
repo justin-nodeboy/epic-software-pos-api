@@ -81,6 +81,10 @@ class Product {
             this.productStock = obj.productStock;
         }
 
+        if (obj.productPictureArray){
+            this.productPictureArray = obj.productPictureArray;
+        }
+
         this.archived = obj.archived || false;
     }
 
