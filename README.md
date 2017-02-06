@@ -36,3 +36,10 @@ NODE_TLS_REJECT_UNAUTHORIZED=0
 * Efficient API
 * Easily customisable
 * ES6 code base
+
+## What needs doing
+* Routes needed for basket checkout (I'll pick this up next)
+* Functional tests of the API (Mocha/Chai or something else?)
+* More unit tests, including mongo function tests
+* Create docker file and image
+
