@@ -11,4 +11,10 @@ router.route('/')
     .get(ProductsController.returnAllProducts)
     .post(ProductsController.createNewProduct);
 
+router.route('/:id')
+    .get(ProductsController.returnSingleProduct)
+    .delete(ProductsController.deleteSingleProduct)
+    .put(ProductsController.updateSingleProduct)
+    .patch(ProductsController.updateSingleProduct);
+
 module.exports = router;

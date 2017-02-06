@@ -17,6 +17,18 @@ chai.use(chaiSubset);
 
 describe("Products", () => {
 
+    it("should return all products", (done) => {
+        chai.request(app)
+            .get('/products')
+            .end((err, res) => {
+                if (!err) {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    done();
+                }
+            });
+    });
+
     it("should create a new product object", (done) => {
         const safeProduct = {
             "productName": "Painted Ampersand",

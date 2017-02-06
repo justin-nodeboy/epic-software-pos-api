@@ -34,7 +34,49 @@ class ProductsController{
             .catch(err => {
                 arguments[1].status(500).send({error: err.message});
             });
+    }
 
+    /**
+     *  This controller method returns a single product
+     */
+    static returnSingleProduct(){
+        productsLib.returnSingleProduct({_id: arguments[0].id})
+            .then(result => {
+                arguments[1].status(200).send({success:result});
+            })
+            .catch(err => {
+                arguments[1].status(500).send({error: err.message});
+            });
+    }
+
+
+    /**
+     * This function deletes a single user
+     */
+    static deleteSingleProduct(){
+        if (!arguments[0].params.id) return arguments[1].status(400).send({error:"Missing ID Parameter"});
+        productsLib.removeSingleProductBy(arguments[0].params.id)
+            .then(() => {
+                arguments[1].status(200).send({success:"Product has been removed"});
+            })
+            .catch(err => {
+                arguments[1].status(500).send({error: err.message});
+            })
+    }
+
+
+    /**
+     * This function updates a single product
+     */
+    static updateSingleProduct(){
+        if (!arguments[0].params.id) return arguments[1].status(400).send({error:"Missing ID Parameter"});
+        productsLib.editProductBy(arguments[0].params.id, arguments[0].body)
+            .then(() => {
+                arguments[1].status(200).send({success:"Product has been updated"});
+            })
+            .catch(err => {
+                arguments[1].status(500).send({error: err.message});
+            })
     }
 
 }
