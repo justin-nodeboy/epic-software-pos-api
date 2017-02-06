@@ -2,7 +2,7 @@
 
 This is part of a product suite that allows you to build a full featured 
 e-commerce system and to self host it. The platform includes an API, Web App, iOS and Android native apps.
-All open source, all 100% free. [Contact us](mailto://justin@epic-software.co.uk) if you want bespoke hosting solutions.
+All open source, all 100% free. [Contact us](mailto:justin@epic-software.co.uk) if you want bespoke hosting solutions.
 
 ## Installation
 
