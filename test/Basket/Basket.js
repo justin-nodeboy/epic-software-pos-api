@@ -7,7 +7,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const chaiSubset = require('chai-subset');
 const expect = require("chai").expect;
-const app = require("../../app");
 const Basket = require("../../models/Basket");
 const should = chai.should();
 
@@ -16,18 +15,6 @@ chai.use(chaiSubset);
 
 
 describe("Baskets", () => {
-
-    it("should return all baskets", (done) => {
-        chai.request(app)
-            .get('/basket')
-            .end((err, res) => {
-                if (!err) {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    done();
-                }
-            });
-    });
 
     it("should create a new basket object", (done) => {
         const safeBasket = {

@@ -7,7 +7,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const chaiSubset = require('chai-subset');
 const expect = require("chai").expect;
-const app = require("../../app");
 const User = require("../../models/User");
 const should = chai.should();
 
@@ -15,18 +14,6 @@ chai.use(chaiHttp);
 chai.use(chaiSubset);
 
 describe("Users", () => {
-    it("should return all users", (done) => {
-        chai.request(app)
-            .get('/users')
-            .end((err, res) => {
-                if (!err) {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    done();
-                }
-            });
-    });
-
     it("should create a new user object", (done) => {
         const safeUser = {
             "password": "test",
