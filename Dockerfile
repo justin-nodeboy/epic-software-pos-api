@@ -17,4 +17,4 @@ ENV BRAND="Epic POS"
 ENV PORT=3443
 ENV NODE_ENV="development"
 ENV NODE_TLS_REJECT_UNAUTHORIZED=0
-ENV MONGODB_URI="mongodb://localhost:27017/epic-pos"
+ENV MONGODB_URI="mongodb://0.0.0.0:27017/epic-pos"
