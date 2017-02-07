@@ -6,7 +6,6 @@ RUN npm install mocha -g
 RUN npm install nodemon -g
 
 RUN apk add --update python krb5 krb5-libs gcc make g++ krb5-dev
-RUN cd tmp && npm install kerberos && rm -rf node_modules
 
 # Install app dependencies
 ADD package.json /src/package.json
