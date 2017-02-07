@@ -4,6 +4,7 @@ WORKDIR /app
 
 RUN npm install mocha -g
 RUN npm install nodemon -g
+RUN npm install -g node-gyp
 
 # Install app dependencies
 ADD package.json /src/package.json
