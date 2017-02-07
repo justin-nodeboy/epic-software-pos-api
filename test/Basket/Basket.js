@@ -4,15 +4,12 @@
  */
 
 const chai = require('chai');
-const chaiHttp = require('chai-http');
 const chaiSubset = require('chai-subset');
 const expect = require("chai").expect;
 const Basket = require("../../models/Basket");
 const should = chai.should();
 
-chai.use(chaiHttp);
 chai.use(chaiSubset);
-
 
 describe("Baskets", () => {
 
