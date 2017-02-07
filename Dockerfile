@@ -1,17 +1,19 @@
 FROM node:6-onbuild
 # Create app directory
-RUN mkdir /src
+RUN mkdir /app
 
 RUN npm install mocha -g
 RUN npm install nodemon -g
 
 # Install app dependencies
-ADD package.json package.json
+ADD package.json /app/package.json
 RUN npm install
 
 RUN npm test
 
-WORKDIR /src
+WORKDIR /app
+
+CMD ["node", "app.js"]
 
 ENV BRAND="Epic POS"
 ENV PORT=3443
