@@ -7,12 +7,14 @@ RUN npm install nodemon -g
 
 RUN apk add --update python krb5 krb5-libs gcc make g++ krb5-dev
 
+RUN npm install -g node-gyp
+
 # Install app dependencies
 ADD package.json /src/package.json
 RUN npm install
 RUN npm test
 
-
+EXPOSE 3443
 
 CMD ["node", "app.js"]
 
