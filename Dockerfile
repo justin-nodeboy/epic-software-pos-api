@@ -3,6 +3,7 @@ FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get -qq update
+RUN curl -sL https://deb.nodesource.com/setup_6.9.5 | sudo -E bash -
 RUN apt-get install -y nodejs npm
 
 RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
