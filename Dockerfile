@@ -1,11 +1,4 @@
-FROM ubuntu:xenial
-
-RUN apt-get -qq update
-RUN apt -qqy upgrade
-RUN apt-get install -y xvfb chromium-chromedriver chromium-browser curl build-essential xvfb default-jre kmod git
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get install -y nodejs
-
+FROM node:7.5.0-alpine
 ADD . /app
 WORKDIR /app
 
