@@ -15,7 +15,7 @@ RUN npm install
 RUN npm test
 
 EXPOSE 3443
-
+CMD npm rebuild
 CMD npm install; npm start
 
 ENV BRAND="Epic POS"
