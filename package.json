@@ -10,13 +10,13 @@
   "author": "Epic Software Solutions Ltd",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.16.0",
     "dotenv": "^4.0.0",
     "express": "^4.14.1",
     "jsonwebtoken": "^7.2.1",
     "mongodb": "^2.2.22",
-    "restify": "^4.3.0",
-    "scrypt": "^6.0.3"
+    "restify": "^4.3.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

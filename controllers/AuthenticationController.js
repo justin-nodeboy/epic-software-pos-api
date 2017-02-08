@@ -23,7 +23,8 @@ class AuthenticationController {
                     throw new Error("Please check your login credentials");
                 }
                 user = result;
-                return EncryptionLib.verifyPassword(new Buffer(arguments[0].body.password), new Buffer(result.password, "base64"));
+                //return EncryptionLib.verifyPassword(new Buffer(arguments[0].body.password), new Buffer(result.password, "base64"));
+                return EncryptionLib.verifyPassword(arguments[0].body.password, result.password);
             })
             .then(() => {
                 return AuthenticationLib.generateToken(user);
