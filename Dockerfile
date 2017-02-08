@@ -11,12 +11,12 @@ RUN npm install -g node-gyp
 
 # Install app dependencies
 ADD package.json /src/package.json
-RUN npm install --production
+RUN npm install
 RUN npm test
 
 EXPOSE 3443
 
-CMD npm install --production; npm start
+CMD npm install; npm start
 
 ENV BRAND="Epic POS"
 ENV PORT=3443
