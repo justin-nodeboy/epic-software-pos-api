@@ -10,7 +10,7 @@ RUN npm install nodemon -g
 RUN npm install -g node-gyp
 
 # Install app dependencies
-ADD package.json /src/package.json
+ADD package.json /app/package.json
 RUN npm install
 RUN npm test
 
