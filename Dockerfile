@@ -3,10 +3,6 @@ ADD . /app
 WORKDIR /app
 
 RUN npm install mocha -g
-RUN npm install nodemon -g
-
-#RUN apk add --update python krb5 krb5-libs gcc make g++ krb5-dev
-
 RUN npm install -g node-gyp
 
 # Install app dependencies
