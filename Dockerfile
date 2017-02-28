@@ -14,7 +14,6 @@ EXPOSE 3443
 CMD npm rebuild
 CMD npm install; npm start
 
-
 ENV BRAND="Epic POS"
 ENV PORT=3443
 ENV NODE_ENV="development"

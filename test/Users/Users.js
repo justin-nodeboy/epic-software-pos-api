@@ -21,7 +21,6 @@ describe("Users", () => {
             "email": "test@test.com",
             "phone": 0o1273123456,
             "joinDate": new Date("2017-01-01T00:00:00+0000"),
-            "dateOfBirth": new Date("1980-01-01T00:00:00+0000"),
             "type": 1
         };
 
@@ -244,37 +243,6 @@ describe("Users", () => {
             "type": 1
         };
         expect(() => new User(badUser)).to.throw(Error, 'joinDate must be a date');
-        done();
-    });
-
-    it("should throw an error when missing dateOfBirth", (done) => {
-        const badUser = {
-            "password": "test",
-            "firstName": "John",
-            "lastName": "Appleseed",
-            "fullName": "John Appleseed",
-            "email": "test@test.com",
-            "phone": 0o1273123456,
-            "joinDate": new Date("2017-01-01T00:00:00+0000"),
-            "type": 1
-        };
-        expect(() => new User(badUser)).to.throw(Error, 'dateOfBirth is required');
-        done();
-    });
-
-    it("should throw an error when dateOfBirth is not a date", (done) => {
-        const badUser = {
-            "password": "test",
-            "firstName": "John",
-            "lastName": "Appleseed",
-            "fullName": "John Appleseed",
-            "email": "test@test.com",
-            "phone": 0o1273123456,
-            "joinDate": new Date("2017-01-01T00:00:00+0000"),
-            "dateOfBirth": 1,
-            "type": 1
-        };
-        expect(() => new User(badUser)).to.throw(Error, 'dateOfBirth must be a date');
         done();
     });
 

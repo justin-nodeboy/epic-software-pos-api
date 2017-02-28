@@ -90,14 +90,6 @@ class User {
             this.joinDate = new Date(obj.joinDate);
         }
 
-        if (!obj.hasOwnProperty('dateOfBirth')){
-            throw new Error("dateOfBirth is required");
-        } else if (Object.prototype.toString.call(obj.dateOfBirth) != "[object Date]"){
-            throw new Error("dateOfBirth must be a date");
-        } else {
-            this.dateOfBirth = new Date(obj.dateOfBirth);
-        }
-
         this.archived = obj.archived || false;
     }
 }
