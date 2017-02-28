@@ -18,7 +18,7 @@ class BasketController {
                 arguments[1].status(200).send({success:result});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             });
     }
 
@@ -32,7 +32,7 @@ class BasketController {
                 arguments[1].status(200).send({success:"A new basket has been created"});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             });
     }
 
@@ -45,7 +45,7 @@ class BasketController {
                 arguments[1].status(200).send({success:result});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             });
     }
 
@@ -59,7 +59,7 @@ class BasketController {
                 arguments[1].status(200).send({success:"Basket has been removed"});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             })
     }
 
@@ -73,7 +73,7 @@ class BasketController {
                 arguments[1].status(200).send({success:"Basket has been updated"});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             })
     }
 

@@ -20,7 +20,7 @@ class UsersController {
                 arguments[1].status(200).send({success:result});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             });
     }
 
@@ -34,6 +34,7 @@ class UsersController {
                 if (result.length > 0){
                     throw new Error("This user already exists");
                 } else {
+                    console.log(arguments[0].body);
                     return EncryptionLib.encryptPassword(arguments[0].body.password);
                 }
             })
@@ -49,7 +50,7 @@ class UsersController {
                 arguments[1].status(201).send({success:"A new user has been created"});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             });
     }
 
@@ -62,7 +63,7 @@ class UsersController {
                 arguments[1].status(200).send({success:result});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             });
     }
 
@@ -76,7 +77,7 @@ class UsersController {
                 arguments[1].status(200).send({success:"User has been removed"});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             })
     }
 
@@ -90,7 +91,7 @@ class UsersController {
                 arguments[1].status(200).send({success:"User has been updated"});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             })
     }
 

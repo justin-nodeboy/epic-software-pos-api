@@ -9,6 +9,7 @@ const fs = require("fs");
 const app = module.exports = express();
 const https = require('https');
 const http = require('http');
+const cors = require("cors");
 const httpPort = 5000;
 const httpsPort = 3443;
 const MongoClient = require("./MongoClient");
@@ -36,7 +37,7 @@ MongoClient.prototype.connectDB(function (err) {
     } else {
         app.use(forceSsl);
     }
-
+    app.use(cors());
     const PrimaryRouter = require("./routes/PrimaryRouter");
     //Server Middleware
     app.use(PrimaryRouter);

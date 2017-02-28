@@ -33,7 +33,7 @@ class AuthenticationController {
                 arguments[1].status(200).send({success:{token: result, profile: user}});
             })
             .catch(err => {
-                arguments[1].status(500).send({error: err.message});
+                arguments[1].status(400).send({error: err.message});
             });
     }
 
